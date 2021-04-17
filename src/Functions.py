@@ -2,11 +2,6 @@ import getpass
 import logging
 from src.Exceptions.ExcepcionDeEntrada import ExcepcionDeEntrada
 
-# settings para hacer bonito el logging
-logging.basicConfig(format='%(message)s', level=logging.INFO)
-logging.basicConfig(format='%(message)s', level=logging.ERROR)
-logging.basicConfig(format='%(message)s', level=logging.WARNING)
-
 
 def get_input(pregunta):
     return input(pregunta)

@@ -4,11 +4,6 @@ from src.Functions import obtener_numero_de_usuario, obtener_string_de_usuario
 from src.Exceptions.ExcepcionDeEntrada import ExcepcionDeEntrada
 from src.Exceptions.ExcepcionDeJuego import ExcepcionDeJuego
 
-# settings para hacer bonito el logging
-logging.basicConfig(format='%(message)s', level=logging.INFO)
-logging.basicConfig(format='%(message)s', level=logging.ERROR)
-logging.basicConfig(format='%(message)s', level=logging.WARNING)
-
 
 class JuegoFrase(JuegoPalabra):
     frase_adivinar = None

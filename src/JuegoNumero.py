@@ -3,11 +3,6 @@ from src.Juego import Juego
 from src.Functions import obtener_numero_de_usuario
 from src.Exceptions.ExcepcionDeJuego import ExcepcionDeJuego
 
-# settings para hacer bonito el logging
-logging.basicConfig(format='%(message)s', level=logging.INFO)
-logging.basicConfig(format='%(message)s', level=logging.ERROR)
-logging.basicConfig(format='%(message)s', level=logging.WARNING)
-
 
 class JuegoNumero(Juego):
     MENSAJE_ERROR_MENOR = 'Intento erróneo. La palabra a adivinar tiene menos letras.'
