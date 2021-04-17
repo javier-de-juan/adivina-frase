@@ -39,3 +39,30 @@ class AdivinaFrase(TestCase):
         juego_numero = JuegoNumero(4, 2)
         self.assertFalse(juego_numero.adivinar_numero())
 
+    @patch('src.JuegoPalabra.obtener_string_de_usuario', return_value="e")
+    def test_adivina_letra(self, getInputMock):
+        juego_palabra = JuegoPalabra(4, 4)
+        self.assertTrue(juego_palabra.adivinar_letra("el test"))
+
+    @patch('src.JuegoPalabra.obtener_string_de_usuario', return_value="a")
+    def test_no_adivina_letra(self, getInputMock):
+        juego_palabra = JuegoPalabra(4, 2)
+        self.assertFalse(juego_palabra.adivinar_letra("El test"))
+
+    @patch('src.JuegoPalabra.obtener_string_de_usuario', return_value="test")
+    def test_adivina_palabra(self, getInputMock):
+        juego_palabra = JuegoPalabra(4, 4)
+        self.assertTrue(juego_palabra.adivinar_palabra("el test"))
+
+    @patch('src.JuegoPalabra.obtener_string_de_usuario', return_value="la")
+    def test_no_adivina_palabra(self, getInputMock):
+        juego_palabra = JuegoPalabra(4, 2)
+        self.assertFalse(juego_palabra.adivinar_palabra("El test"))
+
+    @patch('src.JuegoPalabra.obtener_string_de_usuario', side_effect=['r', 'frase'])
+    def test_mostrar_frase(self, getInputMock):
+        frase_a_adivinar = "mostrar frase"
+        juego_frase = JuegoFrase(frase_a_adivinar, 2)
+        juego_frase.adivinar_letra(frase_a_adivinar)
+        juego_frase.adivinar_palabra(frase_a_adivinar)
+        self.assertEqual('****r*r frase', juego_frase.mostrar_frase().strip())
