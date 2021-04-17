@@ -114,3 +114,9 @@ class AdivinaFrase(TestCase):
     def test_excepcion_opcion_invalida(self):
         with self.assertRaises(ExcepcionDeEntrada):
             raise ExcepcionDeEntrada.opcion_invalida()
+
+    @patch('src.AdivinaFrase.obtener_numero_de_usuario', return_value=1)
+    @patch('src.JuegoNumero.obtener_numero_de_usuario', return_value=4)
+    @patch('src.AdivinaFrase.obtener_string_de_usuario', return_value="probando modulo")
+    def test_adivina_jugar(self, mock1, mock2, mock3):
+        self.assertFalse(jugar())
