@@ -13,8 +13,6 @@ from unittest.mock import patch
 from unittest import TestCase
 
 
-## coverage run -m pytest tests && coverage html src/Main.py
-
 class AdivinaFrase(TestCase):
 
     @patch('src.Functions.get_input', return_value="3")
@@ -115,8 +113,8 @@ class AdivinaFrase(TestCase):
         with self.assertRaises(ExcepcionDeEntrada):
             raise ExcepcionDeEntrada.opcion_invalida()
 
-    @patch('src.AdivinaFrase.obtener_numero_de_usuario', return_value=1)
+    @patch('src.Main.obtener_numero_de_usuario', return_value=1)
     @patch('src.JuegoNumero.obtener_numero_de_usuario', return_value=4)
-    @patch('src.AdivinaFrase.obtener_string_de_usuario', return_value="probando modulo")
+    @patch('src.Main.obtener_string_de_usuario', return_value="probando modulo")
     def test_adivina_jugar(self, mock1, mock2, mock3):
         self.assertFalse(jugar())
