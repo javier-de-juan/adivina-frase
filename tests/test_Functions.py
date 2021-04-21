@@ -13,11 +13,19 @@ class AdivinaFrase(TestCase):
 
     @patch('src.Functions.get_input', return_value="3")
     def test_obtener_numero_de_usuario_ok(self, getInputMock):
+        self.assertEqual(obtener_numero_de_usuario("Introduce un número"), 3)\
+
+    @patch('src.Functions.get_input', side_effect=['a', '3'])
+    def test_obtener_numero_de_usuario_ko(self, getInputMock):
         self.assertEqual(obtener_numero_de_usuario("Introduce un número"), 3)
 
     @patch('src.Functions.get_input', return_value="test")
     def test_obtener_string_de_usuario_ok(self, getInputMock):
         self.assertEqual(obtener_string_de_usuario("Introduce una palabra"), "test")
+
+    @patch('src.Functions.get_input', side_effect=['3', 'Ab', 'c'])
+    def test_obtener_string_de_usuario_ko(self, getInputMock):
+        self.assertEqual(obtener_string_de_usuario("Introduce una palabra", False, 1), "c")
 
     @patch('src.Functions.get_secret', return_value="test")
     def test_obtener_string_secreto_de_usuario_ok(self, getInputMock):
