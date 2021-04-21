@@ -21,7 +21,7 @@ class AdivinaFrase(TestCase):
 
     @patch('src.JuegoFrase.obtener_string_de_usuario', return_value='adivino la frase')
     @patch('src.JuegoNumero.obtener_numero_de_usuario', return_value=4)
-    @patch('src.JuegoFrase.obtener_numero_de_usuario', return_value=2)
+    @patch('src.JuegoFrase.obtener_numero_de_usuario', side_effect=[3, 2])
     def test_no_adivina_frase(self, mock_frase_intentada, mock_longitud, mock_opcion_deseada):
         frase_a_adivinar = "no adivino la frase"
         juego_frase = JuegoFrase(frase_a_adivinar, 1)
